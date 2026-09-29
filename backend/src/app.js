@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(morgan("dev")) // logger info about api
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://authentication-project-1-uijx.onrender.com",
     credentials:true
 }))
 
