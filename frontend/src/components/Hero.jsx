@@ -1,0 +1,69 @@
+import { useNavigate } from "react-router-dom";
+import { Zap, ArrowRight } from "lucide-react";
+
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import { getData } from "@/context/userContext";
+
+const Hero = () => {
+  const navigate = useNavigate();
+  const {user} = getData()
+
+  return (
+    <div className="relative flex min-h-[calc(100svh-3.5rem)] w-full items-center bg-green-50">
+      <section className="w-full py-12 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            {user && <h1>Welcome , <b>{user.username}</b></h1>}
+            
+            <div className="space-y-2">
+              <Badge
+                variant="secondary"
+                className="mb-4 text-green-800 border border-green-200"
+              >
+                <Zap className="w-3 h-3 mr-1" />
+                New: AI-powered note organization
+              </Badge>
+
+              <h1 className="text-green-600 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+                Your thoughts, organized and accessible
+                <span className="text-gray-800"> everywhere</span>
+              </h1>
+
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Capture ideas, organize thoughts, and collaborate seamlessly.
+                The modern note-taking app that grows with you and keeps your
+                ideas secure in the cloud.
+              </p>
+            </div>
+
+            <div className="space-x-4">
+              <Button
+                onClick={() => navigate("/create-todo")}
+                size="lg"
+                className="h-12 px-8 relative bg-green-600"
+              >
+                Start Taking Notes
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-12 px-8 bg-white text-green-800"
+              >
+                Watch Demo
+              </Button>
+            </div>
+
+            <p className="text-sm text-green-800">
+              Free forever • No credit card required • 2 minutes setup
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Hero;
